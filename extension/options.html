@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Chineur Ludique – Options</title>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body { width: auto; max-width: 560px; margin: 0 auto; padding: 28px 20px 40px; }
+    h1 { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; font-size: 20px; }
+    .intro { margin: 0 0 22px; color: var(--muted); }
+    section { margin-bottom: 18px; padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+    h2 { margin: 0 0 10px; font-size: 14px; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    input[type=text] { flex: 1; height: 36px; padding: 0 11px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg); color: var(--text); font: inherit; font-size: 14px; }
+    input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--focus); }
+    .btn { height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: var(--accent); color: var(--accent-ink); font: inherit; font-weight: 650; cursor: pointer; }
+    .btn.ghost { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+    .btn:disabled { opacity: .55; cursor: default; }
+    .hint { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
+    .status { margin-top: 10px; font-size: 13px; }
+    .status.err { color: var(--warn); }
+    label.check { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+    label.check input { margin-top: 3px; accent-color: var(--accent); }
+    ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 12.5px; }
+    .opt { margin-left: 6px; font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .foot { margin: 6px 4px 0; font-size: 11.5px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <h1><img src="icons/icon48.png" width="28" height="28" alt=""> Chineur Ludique</h1>
+  <p class="intro">Repère le jeu de la page, te dit s’il est dans ta collection BoardGameGeek, ouvre les avis BGG et MyLudo, et le cherche d’occasion.</p>
+
+  <section>
+    <h2>Ta collection BoardGameGeek <span class="opt">facultatif</span></h2>
+    <div class="row">
+      <input id="user" type="text" placeholder="Ton pseudo BoardGameGeek" spellcheck="false" autocomplete="off">
+      <button id="save" class="btn">Enregistrer et synchroniser</button>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button id="sync" class="btn ghost">↻ Synchroniser maintenant</button>
+    </div>
+    <div id="status" class="status"></div>
+    <p class="hint">Avec ton pseudo, l’extension t’indique sur chaque fiche si le jeu est dans ta ludothèque ou ta liste d’envies. Sans pseudo, la pastille, les avis BGG/MyLudo et la recherche d’occasion fonctionnent quand même.</p>
+    <p class="hint">Sois connecté à boardgamegeek.com dans ce navigateur : BGG ne donne la collection qu’à son propriétaire connecté. La synchro se refait toute seule deux fois par jour. Les noms français viennent de Wikidata quand ils existent.</p>
+  </section>
+
+  <section>
+    <h2>Pastille sur les pages de jeux</h2>
+    <label class="check"><input type="checkbox" id="pill"> <span>Afficher la pastille (statut dans ta collection, boutons BGG / MyLudo / Occasion)</span></label>
+    <ul>
+      <li>BoardGameGeek, MyLudo, Okkazeo, Philibert : sur chaque fiche de jeu</li>
+      <li>Leboncoin (Jeux &amp; jouets), Vinted, eBay, Amazon : quand l’article est un jeu de société</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Confidentialité</h2>
+    <p class="hint" style="margin:0">Pas de serveur ni de statistiques. L’extension contacte uniquement BoardGameGeek (ta collection) et Wikidata (noms des jeux), et garde tout dans ton navigateur.</p>
+  </section>
+
+  <p class="foot">Chineur Ludique est un projet indépendant, non affilié à BoardGameGeek, MyLudo, Okkazeo ni aux sites de vente cités.</p>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

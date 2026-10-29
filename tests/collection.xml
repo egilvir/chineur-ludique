@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<items totalitems="8" termsofuse="https://boardgamegeek.com/xmlapi/termsofuse" pubdate="Thu, 29 Oct 2026 08:56:06 +0000">
+		<item objecttype="thing" objectid="9209" subtype="boardgame" collid="1">
+	<name sortindex="1">Ticket to Ride</name>
+			<status own="1" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="0"  preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+		<item objecttype="thing" objectid="244521" subtype="boardgame" collid="2">
+	<name sortindex="5">The Quacks of Quedlinburg</name>
+			<status own="0" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="1" wishlistpriority="2" preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+		<item objecttype="thing" objectid="13" subtype="boardgame" collid="3">
+	<name sortindex="1">CATAN</name>
+			<status own="1" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="0"  preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+		<item objecttype="thing" objectid="155987" subtype="boardgame" collid="4">
+	<name sortindex="1">Abyss</name>
+			<status own="0" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="1" wishlistpriority="3" preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+		<item objecttype="thing" objectid="325" subtype="boardgame" collid="5">
+	<name sortindex="1">Catan: Seafarers</name>
+			<status own="1" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="0"  preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+		<item objecttype="thing" objectid="268586" subtype="boardgame" collid="6">
+	<name sortindex="1">6 nimmt! 25 Jahre</name>
+			<status own="1" prevowned="0" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="0"  preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+		<item objecttype="thing" objectid="410201" subtype="boardgame" collid="7">
+	<name sortindex="1">Dungeons &amp; Dragons: Adventure Begins &#039;Starter&#039;</name>
+			<status own="0" prevowned="1" fortrade="0" want="0" wanttoplay="0" wanttobuy="0" wishlist="0"  preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+		<item objecttype="thing" objectid="9209" subtype="boardgame" collid="8">
+	<name sortindex="1">Ticket to Ride</name>
+			<status own="0" prevowned="0" fortrade="0" want="0" wanttoplay="1" wanttobuy="0" wishlist="0"  preordered="0" lastmodified="2026-10-12 08:03:26" />
+		</item>
+</items>

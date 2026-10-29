@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "Chineur Ludique – jeux de société d'occasion",
+  "short_name": "Chineur Ludique",
+  "version": "1.0.0",
+  "description": "Jeux de société : statut dans ta collection BGG, avis BGG et MyLudo en un clic, recherche d'occasion sur Okkazeo, Leboncoin…",
+  "homepage_url": "https://github.com/egilvir/chineur-ludique",
+  "minimum_chrome_version": "111",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Chineur Ludique",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "storage",
+    "tabGroups",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://boardgamegeek.com/*",
+    "https://www.wikidata.org/*",
+    "https://query.wikidata.org/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://boardgamegeek.com/*",
+        "https://www.myludo.fr/*",
+        "https://www.okkazeo.com/*",
+        "https://www.philibertnet.com/*",
+        "https://www.leboncoin.fr/*",
+        "https://www.vinted.fr/*",
+        "https://www.ebay.fr/*",
+        "https://www.amazon.fr/*"
+      ],
+      "js": [
+        "detect.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+L",
+        "mac": "Alt+Shift+L"
+      },
+      "description": "Ouvrir Chineur Ludique"
+    }
+  }
+}

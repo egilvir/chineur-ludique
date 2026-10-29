@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Chineur Ludique</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="hd">
+    <img src="icons/icon48.png" width="26" height="26" alt="">
+    <div class="brand">
+      <strong>Chineur Ludique</strong>
+      <span>Jeux de société d’occasion</span>
+    </div>
+    <button type="button" id="opts" class="icon-btn hd-btn" title="Options" aria-label="Options">⚙</button>
+  </header>
+
+  <section id="game" class="game" hidden>
+    <div class="g-name"><span id="g-name"></span><span id="g-exp" class="exp" hidden>Extension</span></div>
+    <div id="g-sub" class="g-sub"></div>
+    <div id="g-status" class="g-status" hidden></div>
+    <div class="g-links">
+      <button type="button" id="btn-bgg" class="link-btn">Avis BGG <span aria-hidden="true">↗</span></button>
+      <button type="button" id="btn-myludo" class="link-btn">Avis MyLudo <span aria-hidden="true">↗</span></button>
+    </div>
+  </section>
+
+  <form id="form" autocomplete="off" novalidate>
+    <main>
+      <label class="lbl" for="q">Recherche</label>
+      <div id="names" class="names" hidden></div>
+      <div class="field">
+        <input id="q" type="text" placeholder="Nom du jeu…" spellcheck="false">
+        <button type="button" id="clear" class="icon-btn clear" aria-label="Effacer" title="Effacer">×</button>
+      </div>
+
+      <div class="block">
+        <label class="lbl" for="max">Prix max <span id="price-hint" class="lbl-hint"></span></label>
+        <div class="price-row">
+          <div class="price-field">
+            <input id="max" type="number" min="1" step="1" inputmode="numeric" placeholder="—">
+            <span aria-hidden="true">€</span>
+          </div>
+          <div id="price-chips" class="price-chips"></div>
+        </div>
+      </div>
+
+      <fieldset class="block sites">
+        <legend class="lbl">Sites</legend>
+        <div id="sites" class="site-grid"></div>
+      </fieldset>
+
+      <p id="msg" class="msg" role="status" hidden></p>
+      <button id="go" type="submit" class="go">Chercher</button>
+    </main>
+  </form>
+
+  <footer class="ft">
+    <span id="coll" class="coll">Collection BGG…</span>
+    <button type="button" id="sync" class="sync-btn" title="Synchroniser la collection BGG" aria-label="Synchroniser">↻</button>
+  </footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

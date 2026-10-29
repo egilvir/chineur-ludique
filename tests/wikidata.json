@@ -1,0 +1,17 @@
+{
+  "games": [
+    {"q": "Q228308", "bgg": "9209", "fr": "Les Aventuriers du Rail", "en": "Ticket to Ride", "aliases": "Aventuriers du Rail", "types": "jeu de société"},
+    {"q": "Q39405061", "bgg": "14996", "fr": "Les Aventuriers du Rail : Europe", "en": "Ticket to Ride: Europe", "aliases": "", "types": "jeu de société"},
+    {"q": "Q17271", "bgg": "13", "fr": "Catan", "en": "Catan", "aliases": "Les Colons de Catane|Settlers of Catan", "types": "jeu de société"},
+    {"q": "Q55000001", "bgg": "244521", "fr": "Les Charlatans de Belcastel", "en": "The Quacks of Quedlinburg", "aliases": "", "types": "jeu de société"},
+    {"q": "Q55000002", "bgg": "325", "fr": "Catan : Marins", "en": "Catan: Seafarers", "aliases": "", "types": "extension de jeu"}
+  ],
+  "search": {
+    "les aventuriers du rail": ["Q228308", "Q39405061", "Q124394972"],
+    "les aventuriers du rail : europe": ["Q39405061", "Q228308"],
+    "les aventuriers du rail europe": ["Q39405061", "Q228308"],
+    "catan": ["Q17271", "Q55000002"],
+    "les charlatans de belcastel": ["Q55000001"],
+    "catan marins": ["Q55000002", "Q17271"]
+  }
+}

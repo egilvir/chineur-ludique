@@ -1,0 +1,6 @@
+dist/
+tests/out/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
