@@ -8,12 +8,15 @@ import {
   formatPrice,
   normalizeMax,
   timeAgo,
+  POWERED_BY_BGG_LOGO,
 } from './lib.js';
 
 const $ = (id) => document.getElementById(id);
 const state = { settings: null, tab: null, res: null, dirty: false };
 
 const send = (msg) => chrome.runtime.sendMessage(msg).catch(() => null);
+
+for (const img of document.querySelectorAll('img[data-bgg-logo]')) img.src = POWERED_BY_BGG_LOGO;
 
 init();
 

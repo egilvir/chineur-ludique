@@ -17,6 +17,7 @@ import {
   buildGame,
   summarizeCollection,
   key,
+  bggHeaders,
 } from './lib.js';
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -71,10 +72,10 @@ async function fetchViaBggTab(url) {
     try {
       const [res] = await chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        args: [url],
-        func: async (u) => {
+        args: [url, bggHeaders()],
+        func: async (u, headers) => {
           for (let i = 0; i < 10; i++) {
-            const r = await fetch(u, { credentials: 'include', cache: 'no-store' });
+            const r = await fetch(u, { credentials: 'include', cache: 'no-store', headers });
             if (r.status === 202) {
               await new Promise((res) => setTimeout(res, 2500));
               continue;

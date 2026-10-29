@@ -127,6 +127,15 @@ t('buildGame : nom FR prioritaire', () => {
   assert.deepEqual(g.nameOptions, ['Les Aventuriers du Rail', 'Ticket to Ride']);
   assert.equal(g.links.bgg, 'https://boardgamegeek.com/boardgame/9209');
 });
+t('jeton BGG : absent par défaut, envoyé quand défini', async () => {
+  assert.deepEqual(L.bggHeaders(), {});
+  L.BGG.token = 'abc-123';
+  let seen = null;
+  await L.fetchCollectionXml('u', { fetchImpl: async (u, opts) => { seen = opts.headers; return { status: 200, ok: true, text: async () => xml }; }, sleep: async () => {} });
+  L.BGG.token = '';
+  assert.deepEqual(seen, { Authorization: 'Bearer abc-123' });
+});
+t('logo Powered by BGG hébergé par BGG', () => assert.match(L.POWERED_BY_BGG_LOGO, /^https:\/\/cf\.geekdo-images\.com\/.+pic7779581\.png$/));
 t('pas de pseudo par défaut', () => assert.equal(L.DEFAULT_USERNAME, ''));
 t('timeAgo', () => { assert.equal(L.timeAgo(Date.now() - 2 * 3600e3), 'il y a 2 h'); assert.equal(L.timeAgo(Date.now() - 3 * 86400e3), 'il y a 3 j'); });
 

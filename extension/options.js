@@ -1,4 +1,6 @@
-import { loadSettings, saveSettings, timeAgo } from './lib.js';
+import { loadSettings, saveSettings, timeAgo, POWERED_BY_BGG_LOGO } from './lib.js';
+
+for (const img of document.querySelectorAll('img[data-bgg-logo]')) img.src = POWERED_BY_BGG_LOGO;
 
 const $ = (id) => document.getElementById(id);
 const send = (msg) => chrome.runtime.sendMessage(msg).catch(() => null);

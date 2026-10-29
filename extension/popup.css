@@ -154,6 +154,10 @@ main { padding: 13px 14px 2px; }
 .sync-btn { flex: none; width: 28px; height: 28px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 15px; cursor: pointer; }
 .sync-btn:hover { border-color: var(--accent); color: var(--accent); }
 .sync-btn.spin { animation: spin 0.9s linear infinite; }
+
+.credit { display: flex; justify-content: center; padding: 0 14px 10px; }
+.credit a { display: inline-flex; align-items: center; padding: 3px 7px; border-radius: 6px; background: #ffffff; color: #1c1a26; font-size: 11px; font-weight: 600; text-decoration: none; }
+.credit img { display: block; height: 24px; width: auto; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .shake { animation: shake 0.3s; }

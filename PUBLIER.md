@@ -25,14 +25,28 @@ Texte suggéré :
 > **Type** : non commercial
 > **Description** : Extension de navigateur open source (Chrome) pour les joueurs francophones. Sur les fiches de jeux et les annonces d'occasion, elle indique à l'utilisateur si le jeu est dans sa propre collection BGG, et propose des liens vers la fiche BGG. Elle télécharge uniquement la collection de l'utilisateur connecté (xmlapi2/collection), au plus deux fois par jour, sans serveur intermédiaire ni redistribution des données. Code source : https://github.com/egilvir/chineur-ludique
 
-Si BGG délivre un jeton, il n'est pas utile tant que l'extension ne fait qu'importer la collection de l'utilisateur connecté.
+Demande envoyée le 29/10/2026 (application n° 11558, statut visible sur <https://boardgamegeek.com/applications>).
+
+Ce que dit le guide de BGG (version du 2025-07-02) et ce que ça implique :
+- L'exception « sans enregistrement » ne couvre que le téléchargement de **sa propre collection directement depuis le site**. Une extension publique doit être enregistrée et envoyer son jeton (`Authorization: Bearer …`).
+- Le logo **« Powered by BGG »**, lié à boardgamegeek.com, est obligatoire : il est affiché dans le popup et les options.
+- Usage **strictement non commercial** : même des dons volontaires (Ko-fi, Tipeee…) imposent une licence commerciale (probablement gratuite, mais à demander).
+- BGG préfère les appels depuis un serveur avec cache ; l'extension limite les siens au strict minimum (sa propre collection, deux fois par jour).
+
+**Quand l'application est validée :**
+1. Sur <https://boardgamegeek.com/applications>, clique sur **Tokens** à côté de l'application et crée un jeton.
+2. Ne le mets **jamais** dans le dépôt GitHub : il est injecté seulement dans le paquet du Store.
+   ```bash
+   BGG_TOKEN=le-jeton ./scripts/build.sh
+   ```
+3. Envoie ce paquet au Chrome Web Store.
 
 ## 3. Publier sur le Chrome Web Store
 
 1. Crée un compte développeur sur <https://chrome.google.com/webstore/devconsole> (frais d'inscription uniques de 5 $). Utilise une adresse e-mail dédiée : elle ne pourra plus être changée.
-2. Fabrique le paquet :
+2. Fabrique le paquet (avec le jeton BGG une fois l'application validée) :
    ```bash
-   ./scripts/build.sh        # crée dist/chineur-ludique-<version>.zip
+   BGG_TOKEN=le-jeton ./scripts/build.sh        # crée dist/chineur-ludique-<version>.zip
    ```
 3. **Nouvel élément** → envoie le zip.
 4. Remplis les onglets avec `store/fiche-chrome-web-store.md` (fiche, confidentialité, distribution) et les visuels de `store/screenshots/`.

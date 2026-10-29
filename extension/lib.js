@@ -8,6 +8,18 @@ export const ENDPOINTS = {
 };
 
 const BGG_WEB = 'https://boardgamegeek.com';
+
+// Jeton d'application BGG : injecté au moment du build (scripts/build.sh, variable BGG_TOKEN),
+// jamais versionné dans le dépôt.
+export const BGG = { token: '' };
+
+// Logo « Powered by BGG » exigé par les conditions de l'API (exemple officiel hébergé par BGG).
+export const POWERED_BY_BGG_LOGO =
+  'https://cf.geekdo-images.com/HZy35cmzmmyV9BarSuk6ug__small/img/gbE7sulIurZE_Tx8EQJXnZSKI6w=/fit-in/200x150/filters:strip_icc()/pic7779581.png';
+
+export function bggHeaders() {
+  return BGG.token ? { Authorization: `Bearer ${BGG.token}` } : {};
+}
 const MYLUDO_WEB = 'https://www.myludo.fr';
 export const DEFAULT_USERNAME = '';
 export const USER_AGENT = 'ChineurLudique/1.0.0 (extension de navigateur open source)';
@@ -351,7 +363,7 @@ export async function fetchCollectionXml(url, { fetchImpl = fetch, sleep = (ms) 
   for (let i = 0; i < tries; i++) {
     let r;
     try {
-      r = await fetchImpl(url, { credentials: 'include', cache: 'no-store' });
+      r = await fetchImpl(url, { credentials: 'include', cache: 'no-store', headers: bggHeaders() });
     } catch (e) {
       const err = new Error('BGG injoignable');
       err.code = 'network';

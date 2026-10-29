@@ -34,8 +34,14 @@ ROUTES = [
     (r"^https://www\.myludo\.fr/", P("myludo.html")),
     (r"^https://(boardgamegeek\.com|www\.okkazeo\.com|www\.leboncoin\.fr|www\.vinted\.fr|www\.ebay\.fr|www\.philibertnet\.com|www\.facebook\.com)/", P("stub.html")),
 ]
+# Logo « Powered by BGG » servi localement (pas de réseau pendant les tests)
+PNG_1PX = bytes.fromhex("89504e470d0a1a0a0000000d4948445200000001000000010806000000"
+                        "1f15c4890000000d4944415478da63f8ffff3f0005fe02fea7d6a4a00000000049454e44ae426082")
+
 def router(route):
     url = route.request.url
+    if url.startswith("https://cf.geekdo-images.com/"):
+        return route.fulfill(status=200, content_type="image/png", body=PNG_1PX)
     for pat, html in ROUTES:
         if re.search(pat, url):
             return route.fulfill(status=200, content_type="text/html; charset=utf-8", body=html)
@@ -195,6 +201,9 @@ with sync_playwright() as p:
     chips = pop.locator(".name-chip").all_inner_texts()
     check("Popup : choix FR / EN", chips == ["Les Aventuriers du Rail : Europe", "Ticket to Ride: Europe"], chips)
     check("Popup : prix neuf détecté", "neuf 39,99" in pop.inner_text("#price-hint"), pop.inner_text("#price-hint"))
+    credit = pop.locator(".credit a")
+    check("Popup : crédit « Powered by BGG » lié à BGG", credit.count() == 1 and credit.get_attribute("href") == "https://boardgamegeek.com/"
+          and "pic7779581" in (pop.locator(".credit img").get_attribute("src") or "") and pop.locator(".credit img").get_attribute("alt") == "Powered by BGG")
     check("Popup : collection en pied", "MeepleFan · 4 possédés · 2 envies" in pop.inner_text("#coll"), pop.inner_text("#coll"))
     h = pop.evaluate("document.documentElement.scrollHeight"); pop.set_viewport_size({"width": 350, "height": h})
     pop.screenshot(path=os.path.join(OUT, "popup-light.png"))
@@ -232,6 +241,7 @@ with sync_playwright() as p:
 
     opt = ctx.new_page(); opt.set_viewport_size({"width": 760, "height": 760}); opt.goto(f"chrome-extension://{ext}/options.html")
     wait_for(lambda: opt.inner_text("#status").startswith("✓"), timeout=8)
+    check("Options : crédit « Powered by BGG »", opt.locator("a.bgg-credit[href='https://boardgamegeek.com/'] img[alt='Powered by BGG']").count() == 1)
     check("Options : statut de la collection", "7 jeux de MeepleFan : 4 possédés, 2 en liste" in opt.inner_text("#status"), opt.inner_text("#status"))
     opt.screenshot(path=os.path.join(OUT, "options.png"), full_page=True)
     opt.fill("#user", "inconnu"); opt.click("#save")
