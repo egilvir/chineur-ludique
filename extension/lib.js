@@ -42,8 +42,9 @@ export const SITES = [
     name: 'Leboncoin',
     color: '#EC5A13',
     defaultOn: true,
-    // category=41 : Jeux & jouets ; shippable=1 : livraison possible uniquement
-    build: (q, max) => `https://www.leboncoin.fr/recherche?category=41&text=${enc(q)}&shippable=1${max ? `&price=min-${max}` : ''}`,
+    // category=41 : Jeux & jouets ; shippable=1 : livraison possible uniquement ;
+    // transaction_status=search__no_value : annonces disponibles uniquement (pas de vente en cours)
+    build: (q, max) => `https://www.leboncoin.fr/recherche?category=41&text=${enc(q)}&shippable=1&transaction_status=search__no_value${max ? `&price=min-${max}` : ''}`,
   },
   {
     id: 'vinted',

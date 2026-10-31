@@ -36,7 +36,7 @@ Sur myludo.fr, ta liste d'envies s'affiche en colonnes par niveau d'impatience (
 Boutons BGG et MyLudo pour lire les notes et les avis avant d'acheter.
 
 ♻ LA RECHERCHE D'OCCASION
-Un clic ouvre la recherche du jeu sur Okkazeo, Leboncoin (Jeux & jouets, avec livraison), Vinted (Jeux de société) et eBay (occasion), dans un groupe d'onglets. Ainsi que YouTube, pour voir les règles et les présentations en vidéo. En option : Philibert (prix neuf de référence) et Facebook Marketplace. Prix max, choix du nom FR ou EN, clic droit sur un nom de jeu.
+Un clic ouvre la recherche du jeu sur Okkazeo, Leboncoin (Jeux & jouets, avec livraison, annonces disponibles), Vinted (Jeux de société) et eBay (occasion), dans un groupe d'onglets. Ainsi que YouTube, pour voir les règles et les présentations en vidéo. En option : Philibert (prix neuf de référence) et Facebook Marketplace. Prix max, choix du nom FR ou EN, clic droit sur un nom de jeu.
 
 🔒 RESPECTUEUX DE TA VIE PRIVÉE
 Pas de serveur, pas de compte, pas de pub, pas de statistiques. Ta collection reste dans ton navigateur. Code source ouvert.

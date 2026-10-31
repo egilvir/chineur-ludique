@@ -114,7 +114,7 @@ t('buildSearchUrls', () => {
   const u = L.buildSearchUrls('Catan', { maxPrice: 20, sites: L.SITES.map((s) => s.id) }).map((x) => x.url);
   assert.deepEqual(u, [
     'https://www.okkazeo.com/jeux/resultats?rech_nom=Catan',
-    'https://www.leboncoin.fr/recherche?category=41&text=Catan&shippable=1&price=min-20',
+    'https://www.leboncoin.fr/recherche?category=41&text=Catan&shippable=1&transaction_status=search__no_value&price=min-20',
     'https://www.vinted.fr/catalog?search_text=Catan&catalog[]=4881&price_to=20',
     'https://www.ebay.fr/sch/i.html?_nkw=Catan&LH_ItemCondition=3000&_udhi=20',
     'https://www.philibertnet.com/fr/recherche?search_query=Catan',
