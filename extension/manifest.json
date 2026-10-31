@@ -58,6 +58,16 @@
         "content.js"
       ],
       "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.myludo.fr/*"
+      ],
+      "js": [
+        "myludo-wishlist.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN"
     }
   ],
   "commands": {

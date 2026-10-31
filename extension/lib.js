@@ -42,15 +42,16 @@ export const SITES = [
     name: 'Leboncoin',
     color: '#EC5A13',
     defaultOn: true,
-    // category=41 : Jeux & jouets
-    build: (q, max) => `https://www.leboncoin.fr/recherche?category=41&text=${enc(q)}${max ? `&price=min-${max}` : ''}`,
+    // category=41 : Jeux & jouets ; shippable=1 : livraison possible uniquement
+    build: (q, max) => `https://www.leboncoin.fr/recherche?category=41&text=${enc(q)}&shippable=1${max ? `&price=min-${max}` : ''}`,
   },
   {
     id: 'vinted',
     name: 'Vinted',
     color: '#09B1BA',
     defaultOn: true,
-    build: (q, max) => `https://www.vinted.fr/catalog?search_text=${enc(q)}${max ? `&price_to=${max}` : ''}`,
+    // catalog[]=4881 : Jeux de société
+    build: (q, max) => `https://www.vinted.fr/catalog?search_text=${enc(q)}&catalog[]=4881${max ? `&price_to=${max}` : ''}`,
   },
   {
     id: 'ebay',
