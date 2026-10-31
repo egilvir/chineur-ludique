@@ -119,6 +119,7 @@ t('buildSearchUrls', () => {
     'https://www.ebay.fr/sch/i.html?_nkw=Catan&LH_ItemCondition=3000&_udhi=20',
     'https://www.philibertnet.com/fr/recherche?search_query=Catan',
     'https://www.facebook.com/marketplace/search/?query=Catan&maxPrice=20',
+    'https://www.youtube.com/results?search_query=Catan%20jeu%20de%20soci%C3%A9t%C3%A9',
   ]);
 });
 t('buildGame : nom FR prioritaire', () => {

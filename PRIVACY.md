@@ -18,7 +18,7 @@ L'extension ne lit pas ton historique, tes formulaires, tes mots de passe ni le 
 |---|---|---|
 | Ton pseudo BoardGameGeek (si tu le renseignes) | BoardGameGeek | Télécharger ta propre collection, avec ta session BGG |
 | Le nom du jeu affiché (ou son numéro BGG) | Wikidata (Wikimedia) | Trouver son nom français et anglais et son numéro BGG |
-| Le nom du jeu, quand tu cliques sur un bouton | Le site que tu as choisi (Okkazeo, Leboncoin, Vinted, eBay, Philibert, Facebook Marketplace, BoardGameGeek, MyLudo) | Ouvrir la recherche ou la fiche du jeu dans un nouvel onglet |
+| Le nom du jeu, quand tu cliques sur un bouton | Le site que tu as choisi (Okkazeo, Leboncoin, Vinted, eBay, Philibert, Facebook Marketplace, YouTube, BoardGameGeek, MyLudo) | Ouvrir la recherche ou la fiche du jeu dans un nouvel onglet |
 
 Le popup et la page d'options affichent le logo « Powered by BGG », chargé depuis les serveurs d'images de BoardGameGeek, comme l'exigent ses conditions d'utilisation.
 

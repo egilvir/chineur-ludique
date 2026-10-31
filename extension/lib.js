@@ -74,6 +74,14 @@ export const SITES = [
     defaultOn: false,
     build: (q, max) => `https://www.facebook.com/marketplace/search/?query=${enc(q)}${max ? `&maxPrice=${max}` : ''}`,
   },
+  {
+    id: 'youtube',
+    name: 'YouTube',
+    color: '#FF0000',
+    defaultOn: true,
+    // « jeu de société » pour tomber sur les règles et présentations, pas sur des homonymes
+    build: (q) => `https://www.youtube.com/results?search_query=${enc(`${q} jeu de société`)}`,
+  },
 ];
 
 // Sites où le prix affiché est un prix d'occasion (pas un prix neuf de référence)

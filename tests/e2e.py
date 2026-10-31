@@ -32,7 +32,7 @@ ROUTES = [
     (r"^https://www\.vinted\.fr/items/1-", P("vinted_azul.html")),
     (r"^https://www\.vinted\.fr/items/2-", P("vinted_pull.html")),
     (r"^https://www\.myludo\.fr/", P("myludo.html")),
-    (r"^https://(boardgamegeek\.com|www\.okkazeo\.com|www\.leboncoin\.fr|www\.vinted\.fr|www\.ebay\.fr|www\.philibertnet\.com|www\.facebook\.com)/", P("stub.html")),
+    (r"^https://(boardgamegeek\.com|www\.okkazeo\.com|www\.leboncoin\.fr|www\.vinted\.fr|www\.ebay\.fr|www\.philibertnet\.com|www\.facebook\.com|www\.youtube\.com)/", P("stub.html")),
 ]
 # Logo « Powered by BGG » servi localement (pas de réseau pendant les tests)
 PNG_1PX = bytes.fromhex("89504e470d0a1a0a0000000d4948445200000001000000010806000000"
@@ -131,13 +131,14 @@ with sync_playwright() as p:
     pg.locator("#chineur-ludique-pill .actions button", has_text="MyLudo").click(); time.sleep(0.8)
     check("MyLudo ouvre la recherche du nom FR", any(t["url"] == "https://www.myludo.fr/#!/search/Les%20Aventuriers%20du%20Rail" for t in tabs()), [t["url"] for t in tabs()])
     pg.locator("#chineur-ludique-pill .actions button", has_text="Occasion").click(); time.sleep(1.5)
-    urls = sorted(t["url"] for t in tabs() if re.search(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch", t["url"]))
-    check("Occasion ouvre les 4 sites par défaut", urls == sorted([
+    urls = sorted(t["url"] for t in tabs() if re.search(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|youtube\.com/results", t["url"]))
+    check("Occasion ouvre les 5 sites par défaut", urls == sorted([
         "https://www.okkazeo.com/jeux/resultats?rech_nom=Les%20Aventuriers%20du%20Rail",
         "https://www.leboncoin.fr/recherche?category=41&text=Les%20Aventuriers%20du%20Rail&shippable=1",
         "https://www.vinted.fr/catalog?search_text=Les%20Aventuriers%20du%20Rail&catalog[]=4881",
-        "https://www.ebay.fr/sch/i.html?_nkw=Les%20Aventuriers%20du%20Rail&LH_ItemCondition=3000"]), urls)
-    close_tabs_matching(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|boardgamegeek\.com/boardgame/9209|myludo")
+        "https://www.ebay.fr/sch/i.html?_nkw=Les%20Aventuriers%20du%20Rail&LH_ItemCondition=3000",
+        "https://www.youtube.com/results?search_query=Les%20Aventuriers%20du%20Rail%20jeu%20de%20soci%C3%A9t%C3%A9"]), urls)
+    close_tabs_matching(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|youtube\.com/results|boardgamegeek\.com/boardgame/9209|myludo")
 
     # réduire / rouvrir
     pg.locator("#chineur-ludique-pill .x").click(); time.sleep(0.3)
@@ -222,15 +223,15 @@ with sync_playwright() as p:
     h = pop.evaluate("document.documentElement.scrollHeight"); pop.set_viewport_size({"width": 350, "height": h})
     pop.screenshot(path=os.path.join(OUT, "popup-dark.png"))
     pop.click(".site[data-id='philibert']"); pop.fill("#max", "20"); pop.click("#go"); time.sleep(1.5)
-    found = [t for t in tabs() if re.search(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|philibertnet", t["url"])]
-    check("Popup : 5 sites dont Philibert, prix max appliqué", len(found) == 5 and any("price=min-20" in t["url"] for t in found) and any("philibertnet.com/fr/recherche?search_query=Les%20Aventuriers%20du%20Rail" in t["url"] for t in found), [t["url"] for t in found])
+    found = [t for t in tabs() if re.search(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|youtube\.com/results|philibertnet", t["url"])]
+    check("Popup : 6 sites dont Philibert, prix max appliqué", len(found) == 6 and any("price=min-20" in t["url"] for t in found) and any("philibertnet.com/fr/recherche?search_query=Les%20Aventuriers%20du%20Rail" in t["url"] for t in found), [t["url"] for t in found])
     groups = {t["group"] for t in found}
     if len(groups) == 1 and -1 not in groups:
         g = sw.evaluate("id => chrome.tabGroups.get(id)", groups.pop())
         check("Groupe « 🎲 Les Aventuriers du Rail » violet", g["title"] == "🎲 Les Aventuriers du Rail" and g["color"] == "purple", g)
     else:
         check("Onglets groupés", False, groups)
-    close_tabs_matching(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|philibertnet")
+    close_tabs_matching(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|youtube\.com/results|philibertnet")
     sw.evaluate("chrome.storage.sync.get('settings').then(r => { r.settings.sites.philibert = false; return chrome.storage.sync.set({settings: r.settings}); })")
 
     print("— Réglages")

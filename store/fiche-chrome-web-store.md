@@ -36,7 +36,7 @@ Sur myludo.fr, ta liste d'envies s'affiche en colonnes par niveau d'impatience (
 Boutons BGG et MyLudo pour lire les notes et les avis avant d'acheter.
 
 ♻ LA RECHERCHE D'OCCASION
-Un clic ouvre la recherche du jeu sur Okkazeo, Leboncoin (Jeux & jouets, avec livraison), Vinted (Jeux de société) et eBay (occasion), dans un groupe d'onglets. En option : Philibert (prix neuf de référence) et Facebook Marketplace. Prix max, choix du nom FR ou EN, clic droit sur un nom de jeu.
+Un clic ouvre la recherche du jeu sur Okkazeo, Leboncoin (Jeux & jouets, avec livraison), Vinted (Jeux de société) et eBay (occasion), dans un groupe d'onglets. Ainsi que YouTube, pour voir les règles et les présentations en vidéo. En option : Philibert (prix neuf de référence) et Facebook Marketplace. Prix max, choix du nom FR ou EN, clic droit sur un nom de jeu.
 
 🔒 RESPECTUEUX DE TA VIE PRIVÉE
 Pas de serveur, pas de compte, pas de pub, pas de statistiques. Ta collection reste dans ton navigateur. Code source ouvert.
@@ -116,7 +116,7 @@ For board game hunters on French marketplaces (interface in French).
 • Link your BoardGameGeek username: a badge shows if you already own the game, if it's on your wishlist (with priority), or if you own a related game.
 • BGG and MyLudo buttons to read ratings and reviews.
 • On myludo.fr, your wishlist is shown as columns by desire level; drag a game to change it.
-• One click searches the game second-hand on Okkazeo, Leboncoin, Vinted and eBay, in a tab group.
+• One click searches the game second-hand on Okkazeo, Leboncoin, Vinted and eBay, plus YouTube videos, in a tab group.
 • No server, no account, no ads, no analytics. Open source.
 
 Independent project, not affiliated with BoardGameGeek, MyLudo or Okkazeo.
