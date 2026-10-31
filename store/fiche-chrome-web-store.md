@@ -29,11 +29,14 @@ Relie ton pseudo BoardGameGeek et une pastille t'indique tout de suite :
 • si tu possèdes un jeu proche, par exemple le jeu de base d'une extension
 Fini les doublons achetés par erreur.
 
+📋 TA LISTE D'ENVIES MYLUDO EN COLONNES
+Sur myludo.fr, ta liste d'envies s'affiche en colonnes par niveau d'impatience (10 à 1). Glisse un jeu d'une colonne à l'autre pour changer son impatience : c'est enregistré directement sur MyLudo.
+
 ⭐ LES AVIS EN UN CLIC
 Boutons BGG et MyLudo pour lire les notes et les avis avant d'acheter.
 
 ♻ LA RECHERCHE D'OCCASION
-Un clic ouvre la recherche du jeu sur Okkazeo, Leboncoin (Jeux & jouets), Vinted et eBay (occasion), dans un groupe d'onglets. En option : Philibert (prix neuf de référence) et Facebook Marketplace. Prix max, choix du nom FR ou EN, clic droit sur un nom de jeu.
+Un clic ouvre la recherche du jeu sur Okkazeo, Leboncoin (Jeux & jouets, avec livraison), Vinted (Jeux de société) et eBay (occasion), dans un groupe d'onglets. En option : Philibert (prix neuf de référence) et Facebook Marketplace. Prix max, choix du nom FR ou EN, clic droit sur un nom de jeu.
 
 🔒 RESPECTUEUX DE TA VIE PRIVÉE
 Pas de serveur, pas de compte, pas de pub, pas de statistiques. Ta collection reste dans ton navigateur. Code source ouvert.
@@ -70,6 +73,7 @@ Projet indépendant, non affilié à BoardGameGeek, MyLudo, Okkazeo, ni aux site
 | Hôte `boardgamegeek.com` | Télécharger la collection de l'utilisateur connecté via l'API XML de BGG. |
 | Hôtes `www.wikidata.org`, `query.wikidata.org` | Trouver le nom français/anglais et le numéro BGG du jeu affiché. |
 | Scripts de contenu (BGG, MyLudo, Okkazeo, Philibert, Leboncoin, Vinted, eBay, Amazon) | Afficher la pastille (statut dans la collection, boutons avis et recherche) sur les fiches de jeux de ces sites. |
+| Script de contenu myludo.fr (monde `MAIN`) | Afficher la liste d'envies MyLudo de l'utilisateur en colonnes et enregistrer le niveau d'impatience qu'il choisit par glisser-déposer. Le script s'exécute dans le contexte de la page car il utilise le jeton CSRF du site (`App.CSRF`) ; il n'appelle que myludo.fr, avec la session de l'utilisateur, et n'utilise aucune API de l'extension. |
 
 **Code distant (remote code)**
 > Non. Tout le code est inclus dans le paquet de l'extension.
@@ -111,6 +115,7 @@ For board game hunters on French marketplaces (interface in French).
 • Recognizes the game on BoardGameGeek, MyLudo, Okkazeo, Philibert, Leboncoin, Vinted, eBay and Amazon: French and English names, base game or expansion.
 • Link your BoardGameGeek username: a badge shows if you already own the game, if it's on your wishlist (with priority), or if you own a related game.
 • BGG and MyLudo buttons to read ratings and reviews.
+• On myludo.fr, your wishlist is shown as columns by desire level; drag a game to change it.
 • One click searches the game second-hand on Okkazeo, Leboncoin, Vinted and eBay, in a tab group.
 • No server, no account, no ads, no analytics. Open source.
 

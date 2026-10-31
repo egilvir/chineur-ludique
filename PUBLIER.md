@@ -25,7 +25,7 @@ Texte suggéré :
 > **Type** : non commercial
 > **Description** : Extension de navigateur open source (Chrome) pour les joueurs francophones. Sur les fiches de jeux et les annonces d'occasion, elle indique à l'utilisateur si le jeu est dans sa propre collection BGG, et propose des liens vers la fiche BGG. Elle télécharge uniquement la collection de l'utilisateur connecté (xmlapi2/collection), au plus deux fois par jour, sans serveur intermédiaire ni redistribution des données. Code source : https://github.com/egilvir/chineur-ludique
 
-Demande envoyée le 29/10/2026 (application n° 11558, statut visible sur <https://boardgamegeek.com/applications>).
+Demande envoyée le 29/10/2026 (application n° 11558), **validée le 31/10/2026** (<https://boardgamegeek.com/applications>).
 
 Ce que dit le guide de BGG (version du 2025-07-02) et ce que ça implique :
 - L'exception « sans enregistrement » ne couvre que le téléchargement de **sa propre collection directement depuis le site**. Une extension publique doit être enregistrée et envoyer son jeton (`Authorization: Bearer …`).
@@ -39,6 +39,10 @@ Ce que dit le guide de BGG (version du 2025-07-02) et ce que ça implique :
    ```bash
    BGG_TOKEN=le-jeton ./scripts/build.sh
    ```
+   Sous Windows (sans bash ni zip), dans PowerShell :
+   ```powershell
+   $env:BGG_TOKEN = "le-jeton"; python scripts/build.py
+   ```
 3. Envoie ce paquet au Chrome Web Store.
 
 ## 3. Publier sur le Chrome Web Store
@@ -47,13 +51,14 @@ Ce que dit le guide de BGG (version du 2025-07-02) et ce que ça implique :
 2. Fabrique le paquet (avec le jeton BGG une fois l'application validée) :
    ```bash
    BGG_TOKEN=le-jeton ./scripts/build.sh        # crée dist/chineur-ludique-<version>.zip
+   # ou, sous Windows : $env:BGG_TOKEN = "le-jeton"; python scripts/build.py
    ```
 3. **Nouvel élément** → envoie le zip.
 4. Remplis les onglets avec `store/fiche-chrome-web-store.md` (fiche, confidentialité, distribution) et les visuels de `store/screenshots/`.
 5. Visibilité **Non répertoriée** → **Envoyer pour examen**. Comme l'extension s'active sur plusieurs sites, l'examen peut prendre de quelques jours à quelques semaines.
 6. Une fois validée, partage le lien à quelques joueurs, corrige ce qui coince, puis passe en **Publique**.
 
-Pour chaque mise à jour : incrémente `version` dans `extension/manifest.json`, relance `./scripts/build.sh`, envoie le nouveau zip.
+Pour chaque mise à jour : incrémente `version` dans `extension/manifest.json`, relance `./scripts/build.sh` (ou `scripts/build.py`), envoie le nouveau zip. Sur GitHub, crée une release `vX.Y.Z` avec le paquet **sans jeton** (`python scripts/build.py` sans `BGG_TOKEN`).
 
 ## 4. Edge et Firefox (plus tard)
 
