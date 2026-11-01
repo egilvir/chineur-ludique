@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Chineur Ludique – jeux de société d'occasion",
   "short_name": "Chineur Ludique",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Jeux de société : statut dans ta collection BGG, avis BGG et MyLudo en un clic, recherche d'occasion sur Okkazeo, Leboncoin…",
   "homepage_url": "https://github.com/egilvir/chineur-ludique",
   "minimum_chrome_version": "111",
