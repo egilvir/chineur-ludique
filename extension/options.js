@@ -12,6 +12,7 @@ async function init() {
   settings = await loadSettings();
   $('user').value = settings.username || '';
   $('pill').checked = !!settings.pill;
+  $('inserts').checked = !!settings.excludeInserts;
   showStatus(await send({ type: 'cl:info' }));
 
   $('save').addEventListener('click', async () => {
@@ -25,6 +26,10 @@ async function init() {
   $('sync').addEventListener('click', sync);
   $('pill').addEventListener('change', async () => {
     settings.pill = $('pill').checked;
+    await saveSettings(settings);
+  });
+  $('inserts').addEventListener('change', async () => {
+    settings.excludeInserts = $('inserts').checked;
     await saveSettings(settings);
   });
 }

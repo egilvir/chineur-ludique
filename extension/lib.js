@@ -42,16 +42,19 @@ export const SITES = [
     name: 'Leboncoin',
     color: '#EC5A13',
     defaultOn: true,
-    // category=41 : Jeux & jouets ; shippable=1 : livraison possible uniquement ;
-    // transaction_status=search__no_value : annonces disponibles uniquement (pas de vente en cours)
-    build: (q, max) => `https://www.leboncoin.fr/recherche?category=41&text=${enc(q)}&shippable=1&transaction_status=search__no_value${max ? `&price=min-${max}` : ''}`,
+    // category=41 + toy_type=jeuxdesociete : Jeux & jouets › Jeux de société ; shippable=1 : livraison
+    // possible uniquement ; transaction_status=search__no_value : annonces disponibles (pas de vente en cours).
+    // Leboncoin exclut un mot avec NOT (« -mot » marche aussi, les parenthèses non).
+    build: (q, max, { excludeInserts } = {}) =>
+      `https://www.leboncoin.fr/recherche?category=41&toy_type=jeuxdesociete&text=${enc(excludeInserts ? `${q} NOT insert NOT inserts` : q)}` +
+      `&shippable=1&transaction_status=search__no_value${max ? `&price=min-${max}` : ''}`,
   },
   {
     id: 'vinted',
     name: 'Vinted',
     color: '#09B1BA',
     defaultOn: true,
-    // catalog[]=4881 : Jeux de société
+    // catalog[]=4881 : Jeux de société. Pas d'exclusion de mots : Vinted lit « -insert » comme « insert ».
     build: (q, max) => `https://www.vinted.fr/catalog?search_text=${enc(q)}&catalog[]=4881${max ? `&price_to=${max}` : ''}`,
   },
   {
@@ -59,7 +62,8 @@ export const SITES = [
     name: 'eBay',
     color: '#0064D2',
     defaultOn: true,
-    build: (q, max) => `https://www.ebay.fr/sch/i.html?_nkw=${enc(q)}&LH_ItemCondition=3000${max ? `&_udhi=${max}` : ''}`,
+    build: (q, max, { excludeInserts } = {}) =>
+      `https://www.ebay.fr/sch/i.html?_nkw=${enc(excludeInserts ? `${q} -insert -inserts` : q)}&LH_ItemCondition=3000${max ? `&_udhi=${max}` : ''}`,
   },
   {
     id: 'philibert',
@@ -93,6 +97,7 @@ export const DEFAULT_SETTINGS = {
   sites: Object.fromEntries(SITES.map((s) => [s.id, s.defaultOn])),
   groupTabs: true,
   pill: true,
+  excludeInserts: true, // Leboncoin et eBay : écarter les inserts / rangements vendus seuls
 };
 
 function mergeSettings(s) {
@@ -129,11 +134,11 @@ export function normalizeMax(v) {
   return Number.isFinite(n) && n > 0 ? n : null;
 }
 
-export function buildSearchUrls(query, { maxPrice = null, sites = [] } = {}) {
+export function buildSearchUrls(query, { maxPrice = null, sites = [], excludeInserts = false } = {}) {
   const q = String(query || '').replace(/\s+/g, ' ').trim();
   if (!q) return [];
   const max = normalizeMax(maxPrice);
-  return SITES.filter((s) => sites.includes(s.id)).map((s) => ({ id: s.id, name: s.name, url: s.build(q, max) }));
+  return SITES.filter((s) => sites.includes(s.id)).map((s) => ({ id: s.id, name: s.name, url: s.build(q, max, { excludeInserts }) }));
 }
 
 export function bggUrl(game) {
@@ -665,8 +670,8 @@ export function timeAgo(ts, now = Date.now()) {
 // ---------------------------------------------------------------------------
 // Ouverture des onglets (service worker)
 
-export async function openSearch({ query, maxPrice = null, sites = [], groupTabs = true, openerTab = null }) {
-  const urls = buildSearchUrls(query, { maxPrice, sites });
+export async function openSearch({ query, maxPrice = null, sites = [], excludeInserts = false, groupTabs = true, openerTab = null }) {
+  const urls = buildSearchUrls(query, { maxPrice, sites, excludeInserts });
   if (!urls.length) return { opened: 0 };
   const windowId = openerTab ? openerTab.windowId : undefined;
   const baseIndex = openerTab ? openerTab.index + 1 : undefined;

@@ -134,9 +134,9 @@ with sync_playwright() as p:
     urls = sorted(t["url"] for t in tabs() if re.search(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|youtube\.com/results", t["url"]))
     check("Occasion ouvre les 5 sites par défaut", urls == sorted([
         "https://www.okkazeo.com/jeux/resultats?rech_nom=Les%20Aventuriers%20du%20Rail",
-        "https://www.leboncoin.fr/recherche?category=41&text=Les%20Aventuriers%20du%20Rail&shippable=1&transaction_status=search__no_value",
+        "https://www.leboncoin.fr/recherche?category=41&toy_type=jeuxdesociete&text=Les%20Aventuriers%20du%20Rail%20NOT%20insert%20NOT%20inserts&shippable=1&transaction_status=search__no_value",
         "https://www.vinted.fr/catalog?search_text=Les%20Aventuriers%20du%20Rail&catalog[]=4881",
-        "https://www.ebay.fr/sch/i.html?_nkw=Les%20Aventuriers%20du%20Rail&LH_ItemCondition=3000",
+        "https://www.ebay.fr/sch/i.html?_nkw=Les%20Aventuriers%20du%20Rail%20-insert%20-inserts&LH_ItemCondition=3000",
         "https://www.youtube.com/results?search_query=Les%20Aventuriers%20du%20Rail%20jeu%20de%20soci%C3%A9t%C3%A9"]), urls)
     close_tabs_matching(r"okkazeo\.com/jeux/resultats|leboncoin\.fr/recherche|vinted\.fr/catalog|ebay\.fr/sch|youtube\.com/results|boardgamegeek\.com/boardgame/9209|myludo")
 

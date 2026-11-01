@@ -53,7 +53,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   const query = cleanSelection(info.selectionText);
   if (!query) return;
   const settings = await loadSettings();
-  await openSearch({ query, sites: enabledSiteIds(settings), groupTabs: settings.groupTabs, openerTab: tab });
+  await openSearch({ query, sites: enabledSiteIds(settings), excludeInserts: settings.excludeInserts, groupTabs: settings.groupTabs, openerTab: tab });
 });
 
 // ---------------------------------------------------------------------------
@@ -252,6 +252,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           query: msg.query,
           maxPrice: msg.maxPrice,
           sites: msg.sites || enabledSiteIds(settings),
+          excludeInserts: settings.excludeInserts,
           groupTabs: msg.groupTabs != null ? msg.groupTabs : settings.groupTabs,
           openerTab,
         });

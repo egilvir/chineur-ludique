@@ -5,7 +5,7 @@ Extension Chrome pour les fans de jeux de société qui chinent d'occasion. Sur 
 - **reconnaît le jeu** (nom français et anglais, jeu de base ou extension) ;
 - t'indique s'il est **dans ta ludothèque**, ta **liste d'envies** BoardGameGeek, ou si tu possèdes **un jeu proche** ;
 - ouvre ses **avis BGG et MyLudo** en un clic ;
-- le **cherche d'occasion** sur Okkazeo, Leboncoin (avec livraison, annonces disponibles), Vinted et eBay (Philibert et Facebook Marketplace en option), et ouvre ses **vidéos YouTube** (règles, présentations) ;
+- le **cherche d'occasion** sur Okkazeo, Leboncoin (Jeux de société, avec livraison, annonces disponibles, sans les inserts vendus seuls), Vinted et eBay (Philibert et Facebook Marketplace en option), et ouvre ses **vidéos YouTube** (règles, présentations) ;
 - affiche ta **liste d'envies MyLudo en colonnes** par impatience, à réorganiser par glisser-déposer.
 
 Pas de serveur, pas de compte, pas de pub : voir la [politique de confidentialité](PRIVACY.md).
